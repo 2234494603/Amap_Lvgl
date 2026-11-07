@@ -19,6 +19,9 @@ void custom_deinit(void);
  */
 bool gaode_map_set_route(const lv_point_t *points, uint16_t count);
 
+/** Move the vehicle along the active route. Range: 0..1000. */
+void gaode_map_set_progress(uint16_t progress_per_mille);
+
 /** Update the maneuver text shown in the top-left card. */
 void gaode_map_set_navigation(const char *distance_text, const char *road_text);
 

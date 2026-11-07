@@ -32,7 +32,10 @@ for($y = 0; $y -lt $Height; $y++) {
     [void]$builder.Append('    ')
     for($x = 0; $x -lt $Width; $x++) {
         $pixel = $bitmap.GetPixel($x, $y)
-        $rgb565 = (($pixel.R -shr 3) -shl 11) -bor (($pixel.G -shr 2) -shl 5) -bor ($pixel.B -shr 3)
+        $red = [int]$pixel.R
+        $green = [int]$pixel.G
+        $blue = [int]$pixel.B
+        $rgb565 = (($red -shr 3) -shl 11) -bor (($green -shr 2) -shl 5) -bor ($blue -shr 3)
         $lo = $rgb565 -band 0xff
         $hi = ($rgb565 -shr 8) -band 0xff
         [void]$builder.AppendFormat('0x{0:x2}, 0x{1:x2}, ', $lo, $hi)

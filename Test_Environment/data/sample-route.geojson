@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "成都城区用户轨迹示例",
+        "source": "Test_Environment sample"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [104.0527, 30.5747],
+          [104.0565, 30.5770],
+          [104.0619, 30.5764],
+          [104.0668, 30.5738],
+          [104.0705, 30.5715],
+          [104.0753, 30.5698],
+          [104.0796, 30.5668]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>开源地图路线规划测试台</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.3.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <span class="brand-mark">N</span>
+        <div>
+          <p class="eyebrow">OPEN NAV LAB</p>
+          <h1>路线规划测试台</h1>
+        </div>
+      </header>
+
+      <section class="panel compact">
+        <label for="map-style">开源底图</label>
+        <select id="map-style">
+          <option value="liberty">OpenFreeMap · Liberty</option>
+          <option value="bright">OpenFreeMap · Bright</option>
+          <option value="positron">OpenFreeMap · Positron</option>
+          <option value="dark">OpenFreeMap · Dark</option>
+        </select>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ROUTE BUILDER</p>
+            <h2>规划路线</h2>
+          </div>
+          <button id="swap-route" class="icon-button" title="交换起终点" aria-label="交换起终点">⇅</button>
+        </div>
+
+        <button id="pick-start" class="point-row start" type="button">
+          <span class="point-dot">A</span>
+          <span><small>起点</small><strong id="start-label">点击后在地图选择</strong></span>
+        </button>
+        <button id="pick-end" class="point-row end" type="button">
+          <span class="point-dot">B</span>
+          <span><small>终点</small><strong id="end-label">点击后在地图选择</strong></span>
+        </button>
+
+        <div class="action-grid">
+          <button id="plan-route" class="primary" type="button">开始规划</button>
+          <button id="load-sample" class="secondary" type="button">成都示例</button>
+          <button id="clear-route" class="ghost" type="button">清除</button>
+        </div>
+        <p id="status" class="status" role="status">请选择起点和终点</p>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">USER TRACK</p>
+            <h2>加载用户路线</h2>
+          </div>
+        </div>
+        <label class="file-button" for="route-file">导入 GeoJSON / GPX</label>
+        <input id="route-file" type="file" accept=".geojson,.json,.gpx,application/geo+json,application/gpx+xml">
+        <p class="hint">支持 LineString、MultiLineString、GPX track 和 route。</p>
+      </section>
+
+      <section class="panel route-summary" id="route-summary" hidden>
+        <div class="summary-metrics">
+          <div><strong id="distance">--</strong><span>距离</span></div>
+          <div><strong id="duration">--</strong><span>预计用时</span></div>
+        </div>
+        <ol id="steps" class="steps"></ol>
+      </section>
+
+      <section class="panel phone-link">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MCU COMPANION</p>
+            <h2>同步到 LVGL 副屏</h2>
+          </div>
+          <span id="bridge-indicator" class="bridge-indicator">检测中</span>
+        </div>
+        <button id="send-route" class="primary wide" type="button" disabled>发送当前规划路线</button>
+        <div class="progress-row">
+          <label for="nav-progress">导航进度 <strong id="progress-label">0%</strong></label>
+          <input id="nav-progress" type="range" min="0" max="1000" value="0" step="5" disabled>
+        </div>
+        <div class="phone-actions">
+          <button id="toggle-navigation" class="secondary" type="button" disabled>开始模拟导航</button>
+          <button id="check-bridge" class="ghost-inline" type="button">检查连接</button>
+        </div>
+        <p id="phone-status" class="status">等待桥接服务</p>
+      </section>
+
+      <footer>
+        MapLibre · OpenFreeMap · OpenStreetMap · OSRM
+      </footer>
+    </aside>
+
+    <section class="map-stage">
+      <div id="map" aria-label="交互式地图"></div>
+      <div class="map-tip" id="map-tip">先选择“起点”或“终点”，再点击地图</div>
+      <div class="legend">
+        <span><i class="planned"></i>规划路线</span>
+        <span><i class="imported"></i>用户路线</span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

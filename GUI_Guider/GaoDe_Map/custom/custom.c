@@ -6,6 +6,7 @@
  */
 #include "custom.h"
 #include "lv_nav_path_v8.h"
+#include "phone_nav_bridge.h"
 
 #include <stdlib.h>
 
@@ -103,7 +104,7 @@ static void update_vehicle(uint16_t progress)
     int32_t dx;
     int32_t dy;
 
-    if(s_route == NULL || s_route->count < 2) return;
+    if(s_route == NULL || s_route->count < 2 || s_vehicle_img == NULL) return;
     for(i = 1; i < s_route->count; i++) total += approx_distance(&s_route->pts[i - 1], &s_route->pts[i]);
     if(total == 0) return;
 
@@ -142,6 +143,13 @@ bool gaode_map_set_route(const lv_point_t *points, uint16_t count)
     return true;
 }
 
+void gaode_map_set_progress(uint16_t progress_per_mille)
+{
+    if(progress_per_mille > 1000U) progress_per_mille = 1000U;
+    s_progress = progress_per_mille;
+    update_vehicle(s_progress);
+}
+
 void gaode_map_set_navigation(const char *distance_text, const char *road_text)
 {
     LV_UNUSED(distance_text);
@@ -178,7 +186,7 @@ static void create_turn_card(lv_obj_t *parent)
     lv_obj_t *card = lv_img_create(parent);
     clear_widget(card);
     lv_img_set_src(card, &gaode_turn_card);
-    lv_obj_set_pos(card, 16, 14);
+    lv_obj_set_pos(card, 8, 8);
 }
 
 void custom_init(lv_ui *ui)
@@ -225,10 +233,12 @@ void custom_init(lv_ui *ui)
     create_turn_card(s_map);
 
     s_demo_timer = lv_timer_create(demo_timer_cb, DEMO_PERIOD_MS, NULL);
+    phone_nav_bridge_init();
 }
 
 void custom_deinit(void)
 {
+    phone_nav_bridge_deinit();
     if(s_demo_timer != NULL) {
         lv_timer_del(s_demo_timer);
         s_demo_timer = NULL;
