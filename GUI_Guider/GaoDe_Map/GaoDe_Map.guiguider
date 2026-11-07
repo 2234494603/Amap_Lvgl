@@ -3,9 +3,9 @@
 	"version": "1.10.0-GA",
 	"lvglVersion": "v8",
 	"projectSettings": {
-		"board_radius": 0,
+		"board_radius": 7,
 		"defaultFamily": "montserratMedium",
-		"defaultScreen": "",
+		"defaultScreen": "emg7n4dm",
 		"keyBoard": {
 			"display_kb": false,
 			"chinese_input": false,
@@ -279,10 +279,10 @@
 			"name": "screen",
 			"id": "emg7n4dm",
 			"type": "scr",
-			"version": 180,
+			"version": 190,
 			"scrollbar_mode": "OFF",
 			"customer_code": {
-				"code_c": "",
+				"code_c": "/* Dynamic navigation UI and route planning are implemented in custom/custom.c. */",
 				"inc_c": "",
 				"code_py": "",
 				"inc_py": ""
@@ -298,19 +298,82 @@
 					"part": "LV_PART_MAIN",
 					"state": "LV_STATE_DEFAULT",
 					"disable": false,
-					"bg_color": "#ffffff",
+					"bg_color": "#03050a",
 					"bg_grad_dir": "LV_GRAD_DIR_NONE",
 					"bg_dither_mode": "LV_DITHER_NONE",
 					"bg_main_stop": 0,
 					"bg_grad_stop": 255,
 					"bg_grad_color": "#2195f6",
-					"bg_opa": 0,
-					"bg_img_src": "",
+					"bg_opa": 255,
+					"bg_img_src": "import\\image\\editor_preview_480x272.png",
 					"bg_img_opa": 255,
 					"bg_img_recolor": "#ffffff",
 					"bg_img_recolor_opa": 0
 				}
 			]
 		}
-	]
+	],
+	"Application": {
+		"name": "testingJson",
+		"size": {
+			"width": "480",
+			"height": "272"
+		},
+		"freemasterConfig": {
+			"enable": false
+		},
+		"version": "test_v1",
+		"keyBoard": {
+			"display_kb": false,
+			"chinese_input": false,
+			"chinese_library": "mini",
+			"keyboard_font_type": "SourceHanSerifSC_Regular",
+			"keyboard_font_size": 18
+		},
+		"default_scr": "screen",
+		"theme": "LV_THEME_MATERIAL_FLAG_LIGHT",
+		"screen": [
+			{
+				"name": "screen",
+				"id": "emg7n4dm",
+				"type": "scr",
+				"version": 190,
+				"scrollbar_mode": "OFF",
+				"customer_code": {
+					"code_c": "/* Dynamic navigation UI and route planning are implemented in custom/custom.c. */",
+					"inc_c": "",
+					"code_py": "",
+					"inc_py": ""
+				},
+				"width": 480,
+				"height": 272,
+				"visible": true,
+				"flag": [],
+				"event": {},
+				"style": [
+					{
+						"part": "LV_PART_MAIN",
+						"state": "LV_STATE_DEFAULT",
+						"disable": false,
+						"bg_color": "#03050a",
+						"bg_grad_dir": "LV_GRAD_DIR_NONE",
+						"bg_dither_mode": "LV_DITHER_NONE",
+						"bg_main_stop": 0,
+						"bg_grad_stop": 255,
+						"bg_grad_color": "#2195f6",
+						"bg_opa": 255,
+						"bg_img_src": "import\\image\\editor_preview_480x272.png",
+						"bg_img_opa": 255,
+						"bg_img_recolor": "#ffffff",
+						"bg_img_recolor_opa": 0
+					}
+				],
+				"size": [
+					480,
+					272
+				],
+				"widgets": []
+			}
+		]
+	}
 }

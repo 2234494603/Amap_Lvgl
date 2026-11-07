@@ -1,13 +1,11 @@
 /*
-* Copyright 2023 NXP
+* Copyright 2026 NXP
 * NXP Proprietary. This software is owned or controlled by NXP and may only be used strictly in
 * accordance with the applicable license terms. By expressly accepting such terms or by downloading, installing,
 * activating and/or otherwise using the software, you are agreeing that you have read, and that you agree to
 * comply with and are bound by, such license terms.  If you do not agree to be bound by the applicable license
 * terms, then you may not retain, install, activate or otherwise use the software.
 */
-
-
 #ifndef LV_CONF_H
 #define LV_CONF_H
 
@@ -36,7 +34,7 @@
 
 /* Adjust color mix functions rounding. GPUs might calculate color mix (blending) differently.
  * 0: round down, 64: round up from x.75, 128: round up from half, 192: round up from x.25, 254: round up */
-#define LV_COLOR_MIX_ROUND_OFS 0
+#define LV_COLOR_MIX_ROUND_OFS (LV_COLOR_DEPTH == 32 ? 0: 128)
 
 /*Images pixels with this color will not be drawn if they are chroma keyed)*/
 #define LV_COLOR_CHROMA_KEY lv_color_hex(0x00ff00)
@@ -73,7 +71,7 @@
  *====================*/
 
 /*Default display refresh period in milliseconds. LVG will redraw changed areas with this period time*/
-#define LV_DISP_DEF_REFR_PERIOD 20
+#define LV_DISP_DEF_REFR_PERIOD 30
 
 /*Input device read period in milliseconds*/
 #define LV_INDEV_DEF_READ_PERIOD 30
@@ -83,9 +81,9 @@
 #define LV_TICK_CUSTOM 0
 #if LV_TICK_CUSTOM
 /*Header for the system time function*/
-#define LV_TICK_CUSTOM_INCLUDE "Arduino.h"
+#define LV_TICK_CUSTOM_INCLUDE <emscripten.h>
 /*Expression evaluating to current system time in ms*/
-#define LV_TICK_CUSTOM_SYS_TIME_EXPR (millis())
+#define LV_TICK_CUSTOM_SYS_TIME_EXPR ((uint32_t)emscripten_get_now())
 #endif    /* LV_TICK_CUSTOM */
 
 /*Default Dot Per Inch(px/inch). Used to initialize default sizes such as widgets sized, style paddings.
@@ -195,11 +193,11 @@
 *LV_LOG_LEVEL_ERROR       Only critical issue, when the system may fail
 *LV_LOG_LEVEL_USER        Only logs added by the user
 *LV_LOG_LEVEL_NONE        Do not log anything*/
-#define LV_LOG_LEVEL LV_LOG_LEVEL_WARN
+#define LV_LOG_LEVEL LV_LOG_LEVEL_ERROR
 
 /*1: Print the log with 'printf';
  *0: User need to register a callback with `lv_log_register_print_cb()`*/
-#define LV_LOG_PRINTF 0
+#define LV_LOG_PRINTF 1
 #define LV_LOG_TRACE_MEM 1
 #define LV_LOG_TRACE_TIMER 1
 #define LV_LOG_TRACE_INDEV 1
@@ -288,13 +286,6 @@
 
 /*Define a custom attribute to `lv_disp_flush_ready` function*/
 #define LV_ATTRIBUTE_FLUSH_READY 
-
-/*Required alignment size for buffers*/
-#define LV_ATTRIBUTE_MEM_ALIGN_SIZE 64
-
-/*Will be added where memories needs to be aligned (with -Os data might not be aligned to boundary by default).
- * E.g. __attribute__((aligned(4)))*/
-#define LV_ATTRIBUTE_MEM_ALIGN __attribute__((aligned(LV_ATTRIBUTE_MEM_ALIGN_SIZE)))
 
 #ifndef LV_ATTRIBUTE_LARGE_CONST
 /*Attribute to mark large constant arrays for example font's bitmaps*/
@@ -729,7 +720,28 @@
 #define LV_USE_BARCODE 0
 
 #define LV_USE_GUIDER_SIMULATOR 1
+/* Enable the FreeMaster integration */
 #define LV_USE_FREEMASTER 0
+
+/*====================
+ * DEVICES
+ *====================*/
+
+/*Use Wayland to open a window and handle input on Linux or BSD desktops */
+#define LV_USE_WAYLAND 0
+
+/*Driver for /dev/dri/card*/
+#define LV_USE_LINUX_DRM 0
+#if LV_USE_LINUX_DRM
+#define LV_LINUX_DRM_CARD ""
+#endif    /* LV_USE_LINUX_DRM */
+
+/*Driver for evdev input devices*/
+#define LV_USE_EVDEV 0
+#if LV_USE_EVDEV
+/*Deafult evdev input device*/
+#define LV_EVDEV_DEVICE ""
+#endif    /* LV_USE_EVDEV */
 
 #include "lv_conf_ext.h"
 

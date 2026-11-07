@@ -1,1 +1,35 @@
-资源/电动车智能显示屏修图-Q.ai
+# AI 原文件不入库
+/资源/电动车智能显示屏修图-Q.ai
+
+# 本地开发环境 / 临时日志
+.vscode/
+.idea/
+*.log
+
+# C/C++ 编译中间产物
+*.o
+*.obj
+*.d
+*.dep
+*.elf
+*.out
+
+# GUI Guider 自动生成的构建元数据（.c/.h 仍跟踪）
+/GUI_Guider/GaoDe_Map/generated/*.mk
+/GUI_Guider/GaoDe_Map/generated/images/*.mk
+/GUI_Guider/GaoDe_Map/generated/guider_fonts/*.mk
+/GUI_Guider/GaoDe_Map/generated/guider_customer_fonts/*.mk
+/GUI_Guider/GaoDe_Map/generated/**/images_md5.json
+/GUI_Guider/GaoDe_Map/temp/
+
+# LVGL 模拟器构建输出 / 自动配置
+/GUI_Guider/GaoDe_Map/lvgl-simulator/build/
+# 说明：lv_conf.h 暂无模板，暂时保留跟踪；取消跟踪后本规则生效
+/GUI_Guider/GaoDe_Map/lvgl-simulator/lv_conf.h
+
+# 临时分析文件
+/资源/_artboards.jsx
+/资源/_dump_ai.jsx
+/资源/ai_artboards.tsv
+/资源/ai_objects.tsv
+/资源/analyze_ai.py

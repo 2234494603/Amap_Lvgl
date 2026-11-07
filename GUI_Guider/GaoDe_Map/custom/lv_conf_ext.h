@@ -21,6 +21,9 @@
 
 /* common code  begin  */
 
+/* Used by the maneuver icon in custom/custom.c. */
+#undef LV_FONT_MONTSERRAT_24
+#define LV_FONT_MONTSERRAT_24 1
 
 /* common code end */
 
@@ -39,4 +42,4 @@
 
 
 
-#endif  /* LV_CONF_EXT_H */	
+#endif  /* LV_CONF_EXT_H */
