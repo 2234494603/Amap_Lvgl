@@ -12,6 +12,7 @@
 LV_IMG_DECLARE(gaode_map_bg_3d);
 LV_IMG_DECLARE(gaode_vehicle_arrow);
 LV_IMG_DECLARE(gaode_destination_pin);
+LV_IMG_DECLARE(gaode_turn_card);
 
 #define MAP_W               456
 #define MAP_H               248
@@ -22,8 +23,6 @@ LV_IMG_DECLARE(gaode_destination_pin);
 static lv_obj_t *s_map;
 static lv_obj_t *s_vehicle_img;
 static lv_obj_t *s_pin_img;
-static lv_obj_t *s_distance_label;
-static lv_obj_t *s_road_label;
 static lv_timer_t *s_demo_timer;
 static nav_path_v8_t *s_route;
 static uint16_t s_progress;
@@ -31,15 +30,17 @@ static uint8_t s_route_variant;
 static bool s_demo_enabled = true;
 
 static const lv_point_t s_route_a[] = {
-    {244, 232}, {248, 208}, {253, 183}, {262, 160},
-    {286, 145}, {318, 135}, {350, 122}, {380, 109},
-    {405, 93}, {415, 75}, {397, 60}, {376, 51}
+    {228, 247}, {231, 224}, {234, 200}, {237, 176},
+    {240, 151}, {244, 126}, {254, 112}, {285, 101},
+    {326, 91}, {365, 80}, {399, 68}, {411, 60},
+    {402, 54}, {373, 51}
 };
 
 static const lv_point_t s_route_b[] = {
-    {244, 232}, {239, 208}, {235, 183}, {242, 158},
-    {268, 142}, {302, 136}, {332, 119}, {356, 99},
-    {382, 84}, {405, 72}, {395, 58}, {376, 51}
+    {228, 247}, {224, 222}, {222, 198}, {225, 173},
+    {236, 148}, {252, 128}, {278, 115}, {309, 104},
+    {343, 91}, {374, 78}, {401, 67}, {411, 60},
+    {402, 54}, {373, 51}
 };
 
 static void clear_widget(lv_obj_t *obj)
@@ -65,7 +66,7 @@ static lv_obj_t *create_panel(lv_obj_t *parent, int16_t x, int16_t y,
 static void set_pin_position(const lv_point_t *point)
 {
     if(point == NULL || s_pin_img == NULL) return;
-    lv_obj_set_pos(s_pin_img, point->x - 15, point->y - 39);
+    lv_obj_set_pos(s_pin_img, point->x - 17, point->y - 36);
 }
 
 static int16_t heading_angle(int32_t dx, int32_t dy)
@@ -127,7 +128,7 @@ static void update_vehicle(uint16_t progress)
 
     dx = (int32_t)b.x - a.x;
     dy = (int32_t)b.y - a.y;
-    lv_obj_set_pos(s_vehicle_img, p.x - 21, p.y - 21);
+    lv_obj_set_pos(s_vehicle_img, p.x - 30, p.y - 18);
     lv_img_set_angle(s_vehicle_img, heading_angle(dx, dy));
 }
 
@@ -143,8 +144,8 @@ bool gaode_map_set_route(const lv_point_t *points, uint16_t count)
 
 void gaode_map_set_navigation(const char *distance_text, const char *road_text)
 {
-    if(s_distance_label != NULL && distance_text != NULL) lv_label_set_text(s_distance_label, distance_text);
-    if(s_road_label != NULL && road_text != NULL) lv_label_set_text(s_road_label, road_text);
+    LV_UNUSED(distance_text);
+    LV_UNUSED(road_text);
 }
 
 void gaode_map_set_demo_enabled(bool enabled)
@@ -161,11 +162,9 @@ static void demo_timer_cb(lv_timer_t *timer)
         s_route_variant ^= 1U;
         if(s_route_variant == 0U) {
             gaode_map_set_route(s_route_a, (uint16_t)(sizeof(s_route_a) / sizeof(s_route_a[0])));
-            gaode_map_set_navigation("500 m  ENTER", "SOFTWARE PARK 3RD RD");
         }
         else {
             gaode_map_set_route(s_route_b, (uint16_t)(sizeof(s_route_b) / sizeof(s_route_b[0])));
-            gaode_map_set_navigation("320 m  KEEP RIGHT", "SCIENCE AVENUE");
         }
     }
     else {
@@ -176,39 +175,10 @@ static void demo_timer_cb(lv_timer_t *timer)
 
 static void create_turn_card(lv_obj_t *parent)
 {
-    lv_obj_t *card = create_panel(parent, 16, 14, 300, 72, 0x0B0F19);
-    lv_obj_t *icon;
-
-    lv_obj_set_style_radius(card, 14, 0);
-    lv_obj_set_style_bg_opa(card, LV_OPA_90, 0);
-    lv_obj_set_style_border_width(card, 1, 0);
-    lv_obj_set_style_border_color(card, lv_color_hex(0x1C2637), 0);
-    lv_obj_set_style_shadow_width(card, 16, 0);
-    lv_obj_set_style_shadow_opa(card, LV_OPA_30, 0);
-    lv_obj_set_style_shadow_color(card, lv_color_hex(0x000000), 0);
-
-    icon = lv_label_create(card);
-    clear_widget(icon);
-    lv_label_set_text(icon, LV_SYMBOL_RIGHT);
-    lv_obj_set_pos(icon, 18, 17);
-    lv_obj_set_style_text_color(icon, lv_color_hex(0xFFFFFF), 0);
-    lv_obj_set_style_text_font(icon, &lv_font_montserrat_24, 0);
-
-    s_distance_label = lv_label_create(card);
-    clear_widget(s_distance_label);
-    lv_label_set_text(s_distance_label, "500 m  ENTER");
-    lv_obj_set_pos(s_distance_label, 62, 10);
-    lv_obj_set_style_text_color(s_distance_label, lv_color_hex(0xE8EDF5), 0);
-    lv_obj_set_style_text_font(s_distance_label, &lv_font_montserrat_14, 0);
-
-    s_road_label = lv_label_create(card);
-    clear_widget(s_road_label);
-    lv_obj_set_width(s_road_label, 226);
-    lv_label_set_long_mode(s_road_label, LV_LABEL_LONG_DOT);
-    lv_label_set_text(s_road_label, "SOFTWARE PARK 3RD RD");
-    lv_obj_set_pos(s_road_label, 62, 37);
-    lv_obj_set_style_text_color(s_road_label, lv_color_hex(0xFFFFFF), 0);
-    lv_obj_set_style_text_font(s_road_label, &lv_font_montserrat_14, 0);
+    lv_obj_t *card = lv_img_create(parent);
+    clear_widget(card);
+    lv_img_set_src(card, &gaode_turn_card);
+    lv_obj_set_pos(card, 16, 14);
 }
 
 void custom_init(lv_ui *ui)
@@ -248,7 +218,7 @@ void custom_init(lv_ui *ui)
     s_vehicle_img = lv_img_create(s_map);
     clear_widget(s_vehicle_img);
     lv_img_set_src(s_vehicle_img, &gaode_vehicle_arrow);
-    lv_img_set_pivot(s_vehicle_img, 21, 21);
+    lv_img_set_pivot(s_vehicle_img, 30, 18);
     set_pin_position(&s_route->pts[s_route->count - 1]);
     update_vehicle(0);
 
@@ -273,8 +243,6 @@ void custom_deinit(void)
     }
     s_vehicle_img = NULL;
     s_pin_img = NULL;
-    s_distance_label = NULL;
-    s_road_label = NULL;
     s_progress = 0;
     s_route_variant = 0;
 }
