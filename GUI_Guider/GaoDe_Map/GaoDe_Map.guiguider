@@ -1,0 +1,316 @@
+{
+	"projectName": "GaoDe_Map",
+	"version": "1.10.0-GA",
+	"lvglVersion": "v8",
+	"projectSettings": {
+		"board_radius": 0,
+		"defaultFamily": "montserratMedium",
+		"defaultScreen": "",
+		"keyBoard": {
+			"display_kb": false,
+			"chinese_input": false,
+			"chinese_library": "mini",
+			"keyboard_font_type": "SourceHanSerifSC_Regular",
+			"keyboard_font_size": 18
+		},
+		"resolution": {
+			"width": "480",
+			"height": "272"
+		},
+		"color_depth": 16,
+		"support_functions": [],
+		"panel_name": "Simulator",
+		"display_part_number": "Simulator",
+		"OS": "Windows/Linux/MacOS",
+		"Processor": "Simulator",
+		"name": "Simulator",
+		"mcuxpresso_config": {
+			"CMAKE_BUILD_TYPE": "null"
+		},
+		"Optimizations": "Balance",
+		"frameBuffer_region": null
+	},
+	"boardPlatformSettings": {
+		"id": 490,
+		"name": "Simulator",
+		"version": "v1.0.0",
+		"description": "Simulator",
+		"lvgl_version_major": 8,
+		"lvgl_version_minor": 3,
+		"lvgl_version_micro": 10,
+		"author": "NXP",
+		"checksum": "4e6535e6609c83d062454e78150642ac",
+		"images": [
+			"C:\\Users\\Administrator\\AppData\\Roaming\\gui-guider\\1.10.0-GA\\template\\board\\v8\\Simulator\\images\\simulator.png"
+		],
+		"type": "Simulator",
+		"core": "",
+		"disable_widgets": [],
+		"disable_toolchains": [],
+		"configuration": {
+			"OS": "Windows/Linux/MacOS",
+			"Processor": "Simulator",
+			"core_freq": [
+				"Based on host"
+			],
+			"color_depth": [
+				16,
+				24,
+				1,
+				8
+			],
+			"export_code": [
+				"RT-Thread",
+				"Zephyr"
+			],
+			"Optimizations": "Balance",
+			"device_memory": "Based on host",
+			"display_panels": [
+				{
+					"width": 480,
+					"height": 272,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				},
+				{
+					"width": 480,
+					"height": 320,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				},
+				{
+					"width": 296,
+					"height": 128,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				},
+				{
+					"width": 392,
+					"height": 392,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				},
+				{
+					"width": 320,
+					"height": 240,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				},
+				{
+					"width": 800,
+					"height": 480,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				},
+				{
+					"width": 720,
+					"height": 1280,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				},
+				{
+					"width": 1280,
+					"height": 800,
+					"display_panel_name": "Simulator",
+					"display_part_number": "Simulator"
+				}
+			],
+			"support_sdCard": true,
+			"mcuxpresso_config": {
+				"CMAKE_BUILD_TYPE": "null"
+			},
+			"support_applications": [
+				"Aircon",
+				"ButtonCounter",
+				"CameraPreview",
+				"CanvasChart",
+				"CoffeePourAnimation",
+				"DashBoardMenu",
+				"DigitalCluster",
+				"EVCharger",
+				"EmptyUI",
+				"LottieDemo",
+				"MultiLanguage",
+				"MusicPlayer",
+				"PriceTag",
+				"Printer",
+				"ProgressBar",
+				"SDcardStorage",
+				"ScreenTransition",
+				"SliderProgress",
+				"SmartAppliance",
+				"SmartBuilding",
+				"SmartWatch",
+				"SwitchWidgets",
+				"VideoPlayer",
+				"Widgets"
+			]
+		},
+		"lv_conf": {
+			"LV_MEM_ADR": 0,
+			"LV_USE_GPU": 1,
+			"LV_USE_LOG": 0,
+			"LV_MEM_SIZE": 320,
+			"LV_LOG_LEVEL": "LV_LOG_LEVEL_ERROR",
+			"LV_LOG_PRINTF": 1,
+			"LV_MEM_CUSTOM": 0,
+			"LV_COLOR_DEPTH": 16,
+			"LV_HOR_RES_MAX": "(480)",
+			"LV_VER_RES_MAX": "(320)",
+			"LV_FS_RAWFS_XIP": 0,
+			"LV_COLOR_16_SWAP": 0,
+			"LV_MEM_AUTO_DEFRAG": 1,
+			"LV_MEM_CUSTOM_FREE": "free",
+			"LV_USE_GPU_NXP_PXP": "~~",
+			"LV_USE_MEM_MONITOR": 0,
+			"LV_MEM_CUSTOM_ALLOC": "malloc",
+			"LV_USE_PERF_MONITOR": 0,
+			"LV_MEM_CUSTOM_INCLUDE": "<stdlib.h>",
+			"LV_ATTRIBUTE_MEM_ALIGN": "~~",
+			"LV_USE_GPU_NXP_VG_LITE": "~~",
+			"LV_DISP_DEF_REFR_PERIOD": 30,
+			"LV_FS_RAWFS_XIP_BASE_ADDR": "",
+			"LV_ATTRIBUTE_MEM_ALIGN_SIZE": "~~",
+			"LV_USE_GPU_NXP_PXP_AUTO_INIT": "~~"
+		},
+		"old_name": null,
+		"origin_type": "download",
+		"uid": "Simulator_v1.0.0_v8",
+		"status": "normal"
+	},
+	"demoTemplateSettings": {
+		"id": 346,
+		"name": "EmptyUI",
+		"version": "v1.0.0",
+		"description": "An empty UI template",
+		"lvgl_version_major": 8,
+		"lvgl_version_minor": 3,
+		"lvgl_version_micro": 10,
+		"author": "NXP",
+		"checksum": "dd9d1e642bc6e2a22ce82cd515eebbf2",
+		"images": [
+			"C:\\Users\\Administrator\\AppData\\Roaming\\gui-guider\\1.10.0-GA\\template\\application\\v8\\EmptyUI\\images\\simulator.png"
+		],
+		"support_board": [
+			"Simulator",
+			"MIMXRT1050-EVKB",
+			"MIMXRT1040-EVK",
+			"MIMXRT1060-EVK",
+			"MIMXRT1064-EVK",
+			"LPCXpresso54S018",
+			"LPCXpresso54S018M",
+			"LPCXpresso54628",
+			"LPCXpresso55S69",
+			"LPCXpresso55S28",
+			"LPCXpresso55S16",
+			"LPCXpresso55S06",
+			"MCX-N5XX-EVK",
+			"FRDM-MCXN947",
+			"FRDM-MCXN236",
+			"MIMXRT595-EVK",
+			"MIMXRT1160-EVK",
+			"MIMXRT1170-EVK",
+			"MIMXRT1170-EVKB",
+			"MIMXRT1010-EVK",
+			"MIMXRT1020-EVK",
+			"MIMXRT1024-EVK",
+			"MIMXRT1015-EVK",
+			"MIMXRT1060-EVKB",
+			"MIMXRT1060-EVKC",
+			"RD-RW612-BGA",
+			"MCIMX91LP4EVK",
+			"MCIMX91LP4QSB",
+			"MCIMX93FRDM",
+			"MCIMX93EVK",
+			"KW45B41Z-EVK"
+		],
+		"support_resolution": null,
+		"origin_type": "download",
+		"uid": "EmptyUI_v1.0.0_v8",
+		"status": "normal",
+		"type": "EmptyUI",
+		"alt_files": {}
+	},
+	"lvConf": {
+		"LV_MEM_ADR": false,
+		"LV_USE_GPU": true,
+		"LV_USE_LOG": false,
+		"LV_MEM_SIZE": 320,
+		"LV_LOG_LEVEL": "LV_LOG_LEVEL_ERROR",
+		"LV_LOG_PRINTF": true,
+		"LV_MEM_CUSTOM": false,
+		"LV_COLOR_DEPTH": 16,
+		"LV_HOR_RES_MAX": "(480)",
+		"LV_VER_RES_MAX": "(272)",
+		"LV_FS_RAWFS_XIP": false,
+		"LV_COLOR_16_SWAP": false,
+		"LV_MEM_AUTO_DEFRAG": true,
+		"LV_MEM_CUSTOM_FREE": "free",
+		"LV_USE_GPU_NXP_PXP": "~~",
+		"LV_USE_MEM_MONITOR": false,
+		"LV_MEM_CUSTOM_ALLOC": "malloc",
+		"LV_USE_PERF_MONITOR": false,
+		"LV_MEM_CUSTOM_INCLUDE": "<stdlib.h>",
+		"LV_ATTRIBUTE_MEM_ALIGN": "~~",
+		"LV_USE_GPU_NXP_VG_LITE": "~~",
+		"LV_DISP_DEF_REFR_PERIOD": 30,
+		"LV_FS_RAWFS_XIP_BASE_ADDR": "",
+		"LV_ATTRIBUTE_MEM_ALIGN_SIZE": "~~",
+		"LV_USE_GPU_NXP_PXP_AUTO_INIT": "~~"
+	},
+	"ImportFonts": {
+		"SourceHanSerifSC_Regular": "font\\SourceHanSerifSC-Regular.otf",
+		"montserratMedium": "font\\Montserrat-medium.ttf",
+		"LiberationSans": "font\\LiberationSans.ttf",
+		"Abel_regular": "font\\abel-regular.ttf",
+		"Acme_Regular": "font\\Acme-Regular.ttf",
+		"Adventpro_regular": "font\\adventpro-regular.ttf",
+		"AguafinaScript_Regular": "font\\AguafinaScript-Regular.ttf",
+		"Alatsi_Regular": "font\\Alatsi-Regular.ttf",
+		"AlexBrush_Regular": "font\\AlexBrush-Regular.ttf",
+		"AmaticSC_Regular": "font\\AmaticSC-Regular.ttf",
+		"Amiko_Regular": "font\\Amiko-Regular.ttf",
+		"Antonio_Regular": "font\\Antonio-Regular.ttf",
+		"ArchitectsDaughter": "font\\ArchitectsDaughter.ttf",
+		"arial": "font\\ARIAL.TTF"
+	},
+	"FrontJson": [
+		{
+			"name": "screen",
+			"id": "emg7n4dm",
+			"type": "scr",
+			"version": 180,
+			"scrollbar_mode": "OFF",
+			"customer_code": {
+				"code_c": "",
+				"inc_c": "",
+				"code_py": "",
+				"inc_py": ""
+			},
+			"width": 480,
+			"height": 272,
+			"visible": true,
+			"flag": [],
+			"list": [],
+			"event": {},
+			"style": [
+				{
+					"part": "LV_PART_MAIN",
+					"state": "LV_STATE_DEFAULT",
+					"disable": false,
+					"bg_color": "#ffffff",
+					"bg_grad_dir": "LV_GRAD_DIR_NONE",
+					"bg_dither_mode": "LV_DITHER_NONE",
+					"bg_main_stop": 0,
+					"bg_grad_stop": 255,
+					"bg_grad_color": "#2195f6",
+					"bg_opa": 0,
+					"bg_img_src": "",
+					"bg_img_opa": 255,
+					"bg_img_recolor": "#ffffff",
+					"bg_img_recolor_opa": 0
+				}
+			]
+		}
+	]
+}
