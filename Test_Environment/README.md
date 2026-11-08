@@ -7,7 +7,7 @@
 ## 当前运行状态
 
 - 本地地址：<http://127.0.0.1:8080>
-- 当前桥接服务器进程 PID：`28432`
+- 当前桥接服务器进程 PID：`18296`
 - 工程目录：`C:\Users\Administrator\Documents\Adobe\GitHub\Test_Environment`
 - 当前地图渲染：MapLibre GL JS 6.3.0
 - 当前地图数据：OpenFreeMap / OpenStreetMap
@@ -82,7 +82,7 @@ py -m http.server 8080 --bind 127.0.0.1
 停止本次已经启动的进程：
 
 ```powershell
-Stop-Process -Id 28432
+Stop-Process -Id 18296
 ```
 
 如果服务器重新启动过，应先查询实际 PID：

@@ -48,7 +48,7 @@ GaoDe_Map Windows Simulator
 ## 当前状态
 
 - 测试页面：<http://127.0.0.1:8080>
-- 当前桥接服务器 PID：`28432`
+- 当前桥接服务器 PID：`18296`
 - 测试环境不需要 npm，不需要编译；
 - GUI Guider 目标工程：`GUI_Guider/GaoDe_Map/GaoDe_Map.guiguider`；
 - LVGL 版本：8.3；
@@ -110,7 +110,7 @@ http://127.0.0.1:8080
 停止本次桥接服务器：
 
 ```powershell
-Stop-Process -Id 28432
+Stop-Process -Id 18296
 ```
 
 如果 PID 已变化，可查询 8080 端口：
